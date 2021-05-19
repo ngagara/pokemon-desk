@@ -15,9 +15,7 @@ const HomePage = () => {
         <div>
           <Heading lvl={1}>Find all your favorite Pokemon</Heading>
           <Heading lvl={2}>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
-          <Button onClick={() => {}} yellow small wide>
-            See pokemon
-          </Button>
+          <Button onClick={() => {}}>See pokemon</Button>
         </div>
         <Parallax />
       </Layout>
