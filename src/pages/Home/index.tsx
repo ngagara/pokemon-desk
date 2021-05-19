@@ -19,9 +19,7 @@ const HomePage = () => {
             See pokemon
           </Button>
         </div>
-        <div>
-          <Parallax />
-        </div>
+        <Parallax />
       </Layout>
     </div>
   );

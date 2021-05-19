@@ -3,7 +3,6 @@
 interface CssExports {
   button: string;
   small: string;
-  wide: string;
   yellow: string;
 }
 export const cssExports: CssExports;

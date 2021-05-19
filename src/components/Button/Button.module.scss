@@ -26,11 +26,12 @@
 }
 
 .yellow {
-  background-color: $yellow;
+  background: #f2cb07;
 }
+
 .small {
-  font-size: 18px;
-}
-.wide {
-  width: 100%;
+  font-size: 12px;
+  height: 16px;
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
+  padding: 0 20px 2px;
 }
