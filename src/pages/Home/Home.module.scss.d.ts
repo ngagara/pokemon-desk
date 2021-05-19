@@ -3,6 +3,7 @@
 interface CssExports {
   layout: string;
   root: string;
+  txtContainer: string;
 }
 export const cssExports: CssExports;
 export default cssExports;
