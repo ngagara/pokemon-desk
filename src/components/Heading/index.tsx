@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface headingProps {
-  lvl?: number;
+  type?: number;
 }
 
-const Heading: React.FC<headingProps> = ({ children, lvl }) => {
-  const Tag = `h${lvl}` as keyof JSX.IntrinsicElements;
+const Heading: React.FC<headingProps> = ({ children, type }) => {
+  const Tag = `h${type}` as keyof JSX.IntrinsicElements;
 
   return <Tag>{children}</Tag>;
 };

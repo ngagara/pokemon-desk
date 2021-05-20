@@ -16,8 +16,8 @@ const HomePage = () => {
       <Header />
       <Layout className={style.layout}>
         <div className={style.txtContainer}>
-          <Heading lvl={1}>Find all your favorite Pokemon</Heading>
-          <Heading lvl={2}>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
+          <Heading type={1}>Find all your favorite Pokemon</Heading>
+          <Heading type={2}>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
           <Button onClick={() => navigate(LinkEnum.POKEDEX)}>See pokemon</Button>
         </div>
         <Parallax />
