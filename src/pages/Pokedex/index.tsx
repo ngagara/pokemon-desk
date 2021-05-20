@@ -216,24 +216,22 @@ const pokemons = [
   },
 ];
 
-const PokedexPage: React.FC = () => {
+const Pokedex: React.FC = () => {
   return (
     <div>
       <Header />
-      <div>
-        {pokemons.map((pokemonData) => (
-          <PokemonCard
-            name={pokemonData.name_clean}
-            attack={pokemonData.stats.attack}
-            defense={pokemonData.stats.defense}
-            image={pokemonData.img}
-            types={pokemonData.types}
-            key={pokemonData.id}
-          />
-        ))}
-      </div>
+      {pokemons.map((pokemonData) => (
+        <PokemonCard
+          name={pokemonData.name_clean}
+          attack={pokemonData.stats.attack}
+          defense={pokemonData.stats.defense}
+          image={pokemonData.img}
+          types={pokemonData.types}
+          key={pokemonData.id}
+        />
+      ))}
     </div>
   );
 };
 
-export default PokedexPage;
+export default Pokedex;
