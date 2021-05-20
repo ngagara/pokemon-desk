@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import Heading from '../Heading';
 
 import s from './PokemonCard.module.scss';
@@ -16,7 +15,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
   return (
     <div className={s.root}>
       <div className={s.infoWrap}>
-        <Heading type={4}>{name}</Heading>
+        <Heading>{name}</Heading>
         <div className={s.statWrap}>
           <div className={s.statItem}>
             <div className={s.statValue}>{attack}</div>
@@ -28,26 +27,11 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
           </div>
         </div>
         <div className={s.labelWrap}>
-          {types.map((type) => (
-            <span
-              key={type}
-              className={cn(
-                s.label, // @ts-ignore
-                s[type],
-              )}>
-              {type}
-            </span>
-          ))}
-          <span className={s.label}>Fire</span>
+          <span className={s.label}>{types}</span>
         </div>
       </div>
-      <div
-        className={cn(
-          s.pictureWrap,
-          // @ts-ignore
-          s[types[0]],
-        )}>
-        <img src={image} alt={name} />
+      <div className={s.pictureWrap}>
+        <img src={image} alt="Charmander" />
       </div>
     </div>
   );
