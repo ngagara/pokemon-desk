@@ -228,7 +228,7 @@ const PokedexPage: React.FC = () => {
             defense={pokemonData.stats.defense}
             image={pokemonData.img}
             types={pokemonData.types}
-            key={pokemonData.name_clean}
+            key={pokemonData.id}
           />
         ))}
       </div>
