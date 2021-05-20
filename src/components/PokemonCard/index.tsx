@@ -15,7 +15,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
   return (
     <div className={s.root}>
       <div className={s.infoWrap}>
-        <Heading>{name}</Heading>
+        <Heading type={3}>{name}</Heading>
         <div className={s.statWrap}>
           <div className={s.statItem}>
             <div className={s.statValue}>{attack}</div>
@@ -31,7 +31,7 @@ const PokemonCard: React.FC<IPokemonCardProps> = ({ name, attack, defense, types
         </div>
       </div>
       <div className={s.pictureWrap}>
-        <img src={image} alt="Charmander" />
+        <img src={image} alt={name} />
       </div>
     </div>
   );
