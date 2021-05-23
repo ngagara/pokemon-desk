@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'hookrouter';
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
@@ -7,21 +8,19 @@ import Parallax from '../../components/Parallax';
 
 import style from './Home.module.scss';
 
+import { LinkEnum } from '../../routes';
+
 const HomePage = () => {
   return (
     <div className={style.root}>
       <Header />
       <Layout className={style.layout}>
-        <div>
-          <Heading lvl={1}>Find all your favorite Pokemon</Heading>
-          <Heading lvl={2}>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
-          <Button onClick={() => {}} yellow small wide>
-            See pokemon
-          </Button>
+        <div className={style.txtContainer}>
+          <Heading type={1}>Find all your favorite Pokemon</Heading>
+          <Heading type={2}>You can know the type of Pokemon, its strengths, disadvantages and abilities</Heading>
+          <Button onClick={() => navigate(LinkEnum.POKEDEX)}>See pokemon</Button>
         </div>
-        <div>
-          <Parallax />
-        </div>
+        <Parallax />
       </Layout>
     </div>
   );
