@@ -1,6 +1,5 @@
 import React from 'react';
 import { navigate } from 'hookrouter';
-import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
 import Button from '../../components/Button';
@@ -13,7 +12,6 @@ import { LinkEnum } from '../../routes';
 const HomePage = () => {
   return (
     <div className={style.root}>
-      <Header />
       <Layout className={style.layout}>
         <div className={style.txtContainer}>
           <Heading type={1}>Find all your favorite Pokemon</Heading>
