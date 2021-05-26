@@ -5,6 +5,7 @@ import PokemonCard from '../../components/PokemonCard';
 
 import useData from '../../hook/getData';
 import { IPokemons, pokemonsRequest } from '../../interface/pokemons';
+import useDebaunce from '../../hook/useDebouce';
 
 interface Query {
   name?: string
@@ -14,6 +15,8 @@ const Pokedex: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [query, setQuery] = useState<Query>({});
 
+  const debaunceValue = useDebaunce(searchValue, 500);
+
   const handleSerachChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
     setQuery((state: Query) => ({
@@ -21,7 +24,7 @@ const Pokedex: React.FC = () => {
     }))
   }
 
-  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [searchValue]);
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debaunceValue]);
 
   if (isLoading) {
     return <div>Loading...</div>;
