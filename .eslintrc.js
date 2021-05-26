@@ -17,6 +17,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     'no-console': 'error',
     'no-shadow': 'off',
+    camelcase: 'off',
     '@typescript-eslint/no-shadow': ['error'],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx', '.ts', '.js'] }],
     'import/extensions': [
