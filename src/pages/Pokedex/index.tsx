@@ -1,76 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Heading from '../../components/Heading';
 
 import PokemonCard from '../../components/PokemonCard';
 
-import req from '../../utils/request';
+import useData from '../../hook/getData';
+import { IPokemons, pokemonsRequest } from '../../interface/pokemons';
+import useDebaunce from '../../hook/useDebouce';
 
-interface PokemonStats {
-  hp: number;
-  attack: number;
-  defense: number;
-  'special-attack': number;
-  'special-defense': number;
-  speed: number;
+interface Query {
+  name?: string
 }
-
-interface IPokemon {
-  name_clean: string;
-  abilities: Array<string>;
-  stats: PokemonStats;
-  types: Array<string>;
-  img: string;
-  name: string;
-  base_experience: number;
-  height: number;
-  id: number;
-  is_default: boolean;
-  order: number;
-  weight: number;
-}
-
-interface IData {
-  total: number;
-  count: number;
-  offset: number;
-  limit: number;
-  pokemons: Array<IPokemon>;
-}
-
-interface IPokemons {
-  data: IData | undefined;
-  isLoading: boolean;
-  isError: boolean;
-}
-
-const usePokemons = (): IPokemons => {
-  const [data, setData] = useState();
-  const [isLoading, setLoading] = useState(true);
-  const [isError, setError] = useState(false);
-
-  useEffect(() => {
-    const getPokemons = async () => {
-      try {
-        const res = await req('getPokemons');
-        setData(res);
-      } catch (e) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getPokemons();
-  }, []);
-
-  return {
-    data,
-    isLoading,
-    isError,
-  };
-};
 
 const Pokedex: React.FC = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const [searchValue, setSearchValue] = useState('');
+  const [query, setQuery] = useState<Query>({});
+
+  const debaunceValue = useDebaunce(searchValue, 500);
+
+  const handleSerachChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+    setQuery((state: Query) => ({
+      ...state, name: event.target.value
+    }))
+  }
+
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debaunceValue]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -82,8 +36,9 @@ const Pokedex: React.FC = () => {
 
   return (
     <div>
-      <Heading type={1}>TotalPokemons {data?.total}</Heading>
-      {data?.pokemons.map((pokemonData) => (
+      <Heading type={1}>TotalPokemons {!isLoading && data?.total}</Heading>
+      <input type='text' value={searchValue} onChange={handleSerachChange}></input>
+      {!isLoading && data && data.pokemons.map((pokemonData: pokemonsRequest) => (
         <PokemonCard
           name={pokemonData.name_clean}
           attack={pokemonData.stats.attack}
